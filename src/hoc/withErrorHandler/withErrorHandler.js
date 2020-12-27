@@ -42,40 +42,6 @@ const withErrorHandler = (WrappedComponent, axios) => {
         );
     }
 
-    // return class extends Component {
-    //
-    //
-    //     state = {
-    //         error: null
-    //     };
-    //
-    //     componentDidMount() {
-    //         axios.interceptors.request.use(response => {
-    //             this.setState({error: null});
-    //             return response;
-    //         });
-    //         axios.interceptors.response.use(response => response,
-    //             error => {
-    //                 this.setState({error: error});
-    //             });
-    //     }
-    //
-    //     confirmedErrorHandler = () => {
-    //         this.setState({error: null});
-    //     }
-    //
-    //     render() {
-    //         return (
-    //             <Auxiliary>
-    //                 <Modal show={this.state.error}
-    //                        closeModal={this.confirmedErrorHandler}>
-    //                     {this.state.error ? this.state.error.message : null}
-    //                 </Modal>
-    //                 <WrappedComponent {...this.props}/>
-    //             </Auxiliary>
-    //         );
-    //     }
-    // }
 };
 
 export default withErrorHandler;

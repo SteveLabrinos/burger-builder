@@ -78,29 +78,16 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-        //  sending a post request to the firebase server
-        this.setState({loading: true});
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            //  adding some dummy data here for the user
-            customer: {
-                name: 'Steve Labrinos',
-                address: {
-                    street: 'Epidayrou 1',
-                    zipCode: '784555',
-                    country: 'Greece'
-                },
-                email: 'email@test.com'
-            },
-            deliveryMethod: 'fastest'
-        };
-
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({loading: false, purchasing: false});
-            }).catch(error => {
-            this.setState({loading: false, purchasing: false});
+        //  navigate to the checkout page
+        const params = Object.keys(this.state.ingredients)
+            .map(idKey => {
+                return `${encodeURIComponent(idKey)}=${encodeURIComponent(this.state.ingredients[idKey])}`;
+            });
+        //  also adding the total price
+        params.push(`price=${encodeURIComponent(this.state.totalPrice)}`);
+        this.props.history.push({
+            pathname: `/checkout`,
+            search: `?${params.join('&')}`
         });
     }
 
@@ -113,9 +100,12 @@ class BurgerBuilder extends Component {
                         return sum + cur;
                     }, 4.00);
 
+                const purchasable = sum > 4.00;
+
                 this.setState({
                     ingredients: response.data,
-                    totalPrice: sum
+                    totalPrice: sum,
+                    purchasable: purchasable
                 });
             }).catch(err => {
                 this.setState({error: true});
@@ -124,11 +114,9 @@ class BurgerBuilder extends Component {
 
     render() {
         const disabledInfo = {...this.state.ingredients};
-        console.log(disabledInfo);
         for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0;
         }
-        console.log(disabledInfo);
 
         let burger = this.state.error ? <p>Ingredients can't load!</p> : <Spinner/>;
         let orderSummary = null;

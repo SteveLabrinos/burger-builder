@@ -1,22 +1,20 @@
 import React from 'react';
 import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
+import Checkout from './containers/Checkout/Checkout';
+import Orders from './containers/Orders/Orders';
+import {Route, Switch} from 'react-router-dom';
 
 function App() {
-    //  test interceptors kill with React hooks
-    // const [state, newState] = useState({show: true});
-    //
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         newState({show: false});
-    //     }, 5000);
-    // }, [])
 
     return (
         <div>
             <Layout>
-                {/*{state.show ? <BurgerBuilder /> : null}*/}
-                <BurgerBuilder />
+                <Switch>
+                    <Route path="/checkout" component={Checkout}/>
+                    <Route path="/"  exact component={BurgerBuilder}/>
+                    <Route path="/orders"  exact component={Orders}/>
+                </Switch>
             </Layout>
         </div>
     );
