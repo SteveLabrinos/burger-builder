@@ -3,39 +3,124 @@ import axios from '../../../axios-orders';
 
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
+import Input from '../../../components/UI/Input/Input';
 
 import classes from './ContactData.module.css';
 
 class ContactData extends Component {
 
     state = {
-        name: '',
-        email: '',
-        address: {
-            street: '',
-            postalCode: ''
+        orderForm: {
+            //  for each input element we define the attributes
+            name: {
+                elementType: 'input',
+                elementConf: {
+                    type: 'text',
+                    placeholder: 'Your Name'
+                },
+                value: '',
+                validation: {
+                    required: true
+                },
+                valid: false,
+                touched: false,
+                errorMsg: 'Name must have a value'
+            },
+            address: {
+                elementType: 'input',
+                elementConf: {
+                    type: 'text',
+                    placeholder: 'Street'
+                },
+                value: '',
+                validation: {
+                    required: true
+                },
+                valid: false,
+                touched: false,
+                errorMsg: 'Address must have a value'
+            },
+            zipCode: {
+                elementType: 'input',
+                elementConf: {
+                    type: 'text',
+                    placeholder: 'Zip Code'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    minLength: 5,
+                    maxLength: 5
+                },
+                valid: false,
+                touched: false,
+                errorMsg: 'Zip Code must have a value and be 5 characters length'
+            },
+            country: {
+                elementType: 'input',
+                elementConf: {
+                    type: 'text',
+                    placeholder: 'Country'
+                },
+                value: '',
+                validation: {
+                    required: true
+                },
+                valid: false,
+                touched: false,
+                errorMsg: 'Country must have a value'
+            },
+            email: {
+                elementType: 'input',
+                elementConf: {
+                    type: 'email',
+                    placeholder: 'Your E-Mail'
+                },
+                value: '',
+                validation: {
+                    required: true
+                },
+                valid: false,
+                touched: false,
+                errorMsg: 'Provide a valid E-Mail'
+            },
+            deliveryMethod: {
+                elementType: 'select',
+                elementConf: {
+                    options: [
+                        {
+                            value: 'fast',
+                            displayValue: 'Fastest'
+                        },
+                        {
+                            value: 'cheap',
+                            displayValue: 'Cheapest'
+                        }
+                    ]
+                },
+                value: 'fast',
+                validation: {},
+                valid: true,
+                touched: false
+            }
         },
-        loading: false
+        loading: false,
+        formIsValid: false
     };
 
     orderHandler = (e) => {
         e.preventDefault();
         //  sending a post request to the firebase server
         this.setState({loading: true});
+        //  populating the orderData from the input that is passed on the state
+        const orderData = {};
+        Object.keys(this.state.orderForm)
+            .map(element => orderData[element] = this.state.orderForm[element].value);
+
         const order = {
             ingredients: this.props.ingredients,
             price: this.props.totalPrice,
-            //  adding some dummy data here for the user
-            customer: {
-                name: this.state.name,
-                address: {
-                    street: this.state.address.street,
-                    zipCode: this.state.address.postalCode,
-                    country: 'Greece'
-                },
-                email: this.state.email
-            },
-            deliveryMethod: 'fastest'
+            orderData
         };
 
         axios.post('/orders.json', order)
@@ -47,17 +132,67 @@ class ContactData extends Component {
         });
     }
 
+    inputChangeHandler = (event, elementIdentifier) => {
+        //  copying state form to update it immutably
+        const updatedForm = {...this.state.orderForm};
+        //  deep copying of nested object before updating
+        const updatedElement = {...updatedForm[elementIdentifier]};
+        //  changing the value of the element
+        updatedElement.value = event.target.value;
+        //  validation check for the updated element
+        updatedElement.valid = this.checkValidity(updatedElement.value, updatedElement.validation);
+        updatedElement.touched = true;
+        updatedForm[elementIdentifier] = updatedElement;
+        //  checking if all the form is valid
+        let formIsValid = true;
+        for (let updateIdentifier in updatedForm) {
+            formIsValid = updatedForm[updateIdentifier].valid && formIsValid;
+        }
+        //  updating the state immutably
+        this.setState({orderForm: updatedForm, formIsValid: formIsValid});
+    }
+
+    //  method to apply all the validation rules
+    checkValidity (value, rules) {
+        let isValid = true;
+
+        if (rules.required) {
+            isValid = value.trim() !== '' && isValid;
+        }
+
+        if (rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid;
+        }
+
+        if (rules.maxLength) {
+            isValid = value.length <= rules.maxLength && isValid;
+        }
+
+        return isValid;
+    }
+
 
     render() {
         const form = this.state.loading ?
             <Spinner/> :
-            <form>
-                <input className={classes.Input} type="text" name="name" placeholder="Your Name"/>
-                <input className={classes.Input} type="email" name="email" placeholder="Your Mail"/>
-                <input className={classes.Input} type="text" name="street" placeholder="Street"/>
-                <input className={classes.Input} type="text" name="postal" placeholder="Postal Code"/>
-                <Button btnType="Success"
-                        clicked={this.orderHandler}>ORDER</Button>
+            <form onSubmit={this.orderHandler}>
+                {
+                    //  Dynamic from creation based on state values
+                    Object.keys(this.state.orderForm)
+                    .map(el => (
+                        <Input
+                            key={el}
+                            elementType={this.state.orderForm[el].elementType}
+                            elementConfig={this.state.orderForm[el].elementConf}
+                            elementValue={this.state.orderForm[el].value}
+                            invalid={!this.state.orderForm[el].valid}
+                            isTouched={this.state.orderForm[el].touched}
+                            shouldValidate={this.state.orderForm[el].validation}
+                            errMsg={this.state.orderForm[el].errorMsg}
+                            changed={event => this.inputChangeHandler(event, el)} />
+                    ))
+                }
+                <Button btnType="Success" disabled={!this.state.formIsValid}>ORDER</Button>
             </form>;
 
         return (
