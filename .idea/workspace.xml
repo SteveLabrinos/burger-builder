@@ -2,17 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="358f5602-abd8-4a03-b9e2-22547ffb615b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/reducers/ingredients.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/actions/burgerBuilder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/actions/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/actions/order.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/reducers/order.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/utility.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Burger/BuildControls/BuildControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Burger/BuildControls/BuildControls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/BurgerBuilder/BurgerBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/BurgerBuilder/BurgerBuilder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Checkout/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Checkout/Checkout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Checkout/ContactData/ContactData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Checkout/ContactData/ContactData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Orders/Orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Orders/Orders.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/actionsTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/ingredients.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/burgerBuilder.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +50,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -66,6 +71,7 @@
       <recent name="$PROJECT_DIR$/src/assets/images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/store/actions" />
       <recent name="$PROJECT_DIR$/src/components/Navigation/SideDrawer" />
     </key>
   </component>
@@ -94,7 +100,8 @@
       <updated>1608506465964</updated>
       <workItem from="1608506467093" duration="477000" />
       <workItem from="1608506954242" duration="4555000" />
-      <workItem from="1611519014998" duration="8877000" />
+      <workItem from="1611519014998" duration="9167000" />
+      <workItem from="1611592862216" duration="16183000" />
     </task>
     <servers />
   </component>
