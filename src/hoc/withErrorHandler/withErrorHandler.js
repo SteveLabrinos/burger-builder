@@ -1,47 +1,19 @@
-import React, {useState, useEffect} from 'react';
-import Auxiliary from '../Auxiliary/Auxiliary';
+import React from 'react';
 import Modal from '../../components/UI/Modal/Modal';
+import useHttpErrorHandler from '../../hooks/http-error-handler';
 
 const withErrorHandler = (WrappedComponent, axios) => {
     return props => {
-        const [errorState, setErrorState] = useState({error: null});
-
-        const errorClearHandler = () => {
-            setErrorState({error: null});
-        }
-
-        const errorRaiseHandler = (error) => {
-            setErrorState({error: error});
-        }
-
-        useEffect(() => {
-            const reqInterceptor = axios.interceptors.request.use(response => {
-                errorClearHandler();
-                return response;
-            });
-            const resInterceptor = axios.interceptors.response.use(response => response,
-                error => {
-                    errorRaiseHandler(error);
-                });
-            //  ejecting the interceptors after the components unmount
-            return () => {
-                console.log(`Component is about to unmount. Interceptors killed: ${reqInterceptor} and ${resInterceptor}`);
-                axios.interceptors.request.eject(reqInterceptor);
-                axios.interceptors.request.eject(resInterceptor);
-            };
-        }, []);
-
+        const [error, clearError] = useHttpErrorHandler(axios);
         return (
-            <Auxiliary>
-                <Modal show={errorState.error}
-                       closeModal={errorClearHandler}>
-                    {errorState.error ? errorState.error.message : null}
+            <React.Fragment>
+                <Modal show={error} closeModal={clearError}>
+                    {error ? error.message : null}
                 </Modal>
                 <WrappedComponent {...props}/>
-            </Auxiliary>
+            </React.Fragment>
         );
     }
-
 };
 
 export default withErrorHandler;

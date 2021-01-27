@@ -2,22 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="358f5602-abd8-4a03-b9e2-22547ffb615b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/actions/burgerBuilder.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/actions/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/actions/order.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/reducers/order.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/utility.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/Auth/Auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/Auth/Auth.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/Auth/Logout/Logout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/http-error-handler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/actions/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/reducers/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Burger/BuildControls/BuildControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Burger/BuildControls/BuildControls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navigation/NavigationItems/NavigationItems.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/NavigationItems/NavigationItems.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navigation/SideDrawer/SideDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/SideDrawer/SideDrawer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Toolbar/Toolbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Toolbar/Toolbar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/BurgerBuilder/BurgerBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/BurgerBuilder/BurgerBuilder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Checkout/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Checkout/Checkout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Checkout/ContactData/ContactData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Checkout/ContactData/ContactData.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Orders/Orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Orders/Orders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/withErrorHandler/withErrorHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/withErrorHandler/withErrorHandler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/actionsTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/ingredients.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/burgerBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/actionsTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/actionsTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/burgerBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/burgerBuilder.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +108,7 @@
       <workItem from="1608506467093" duration="477000" />
       <workItem from="1608506954242" duration="4555000" />
       <workItem from="1611519014998" duration="9167000" />
-      <workItem from="1611592862216" duration="16183000" />
+      <workItem from="1611592862216" duration="39981000" />
     </task>
     <servers />
   </component>
